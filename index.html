@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>All Things Link — The Store</title>
+<meta name="description" content="The official store for the LINKS ecosystem. Digital resources, guides, and products from Ben Linkous — coming soon." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#09090b;
+  --surface:#111113;
+  --surface2:#18181b;
+  --border:rgba(255,255,255,0.08);
+  --border2:rgba(255,255,255,0.14);
+  --text:#fafafa;
+  --muted:#a1a1aa;
+  --faint:#3f3f46;
+  --accent:#f59e0b;
+  --accent-dim:rgba(245,158,11,0.12);
+  --accent-dark:#b45309;
+  --green:#22c55e;
+  --green-dim:rgba(34,197,94,0.1);
+  --sans:'DM Sans',sans-serif;
+  --display:'Syne',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65;overflow-x:hidden;min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+
+/* grain */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.025;pointer-events:none;z-index:999;}
+
+/* ── NAV ── */
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 2.5rem;border-bottom:1px solid var(--border);
+  background:rgba(9,9,11,0.92);backdrop-filter:blur(14px);
+  position:sticky;top:0;z-index:100;
+}
+.nav-brand{
+  font-family:var(--display);font-weight:800;font-size:1.05rem;
+  letter-spacing:-0.01em;color:var(--text);
+}
+.nav-brand em{color:var(--accent);font-style:normal;}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;color:var(--muted);transition:color 0.15s;}
+.nav-links a:hover{color:var(--text);}
+
+/* ── HERO ── */
+.hero{
+  min-height:85vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:5rem 2rem;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 50% at 50% 40%,rgba(245,158,11,0.07) 0%,transparent 65%);
+}
+.hero-inner{max-width:680px;position:relative;z-index:1;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--accent-dim);border:1px solid rgba(245,158,11,0.25);
+  color:var(--accent);font-family:var(--mono);font-size:0.65rem;
+  letter-spacing:0.1em;padding:0.35rem 0.9rem;
+  border-radius:999px;margin-bottom:2rem;
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.hero h1{
+  font-family:var(--display);font-size:clamp(2.8rem,7vw,5rem);
+  font-weight:800;letter-spacing:-0.03em;line-height:1.05;
+  color:var(--text);margin-bottom:1.25rem;
+}
+.hero h1 em{color:var(--accent);font-style:normal;}
+.hero-sub{
+  font-size:1.1rem;font-weight:300;color:var(--muted);
+  max-width:520px;margin:0 auto 2.5rem;line-height:1.8;
+}
+.hero-sub strong{color:var(--text);font-weight:500;}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-primary{
+  display:inline-block;background:var(--accent);color:#000;
+  font-family:var(--display);font-weight:700;font-size:0.9rem;
+  padding:0.85rem 1.75rem;border-radius:8px;
+  transition:opacity 0.15s,transform 0.15s;
+}
+.btn-primary:hover{opacity:0.88;transform:translateY(-1px);}
+.btn-outline{
+  display:inline-block;background:transparent;color:var(--text);
+  font-family:var(--display);font-weight:600;font-size:0.9rem;
+  padding:0.85rem 1.75rem;border-radius:8px;
+  border:1px solid var(--border2);transition:border-color 0.15s;
+}
+.btn-outline:hover{border-color:var(--accent);}
+
+/* ── WHAT'S COMING ── */
+.coming-section{
+  padding:5rem 2.5rem;max-width:1000px;margin:0 auto;
+  border-top:1px solid var(--border);
+}
+.section-label{
+  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;
+  color:var(--accent);margin-bottom:0.6rem;
+}
+.section-title{
+  font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.4rem);
+  font-weight:800;letter-spacing:-0.02em;color:var(--text);
+  margin-bottom:0.75rem;
+}
+.section-sub{color:var(--muted);font-size:0.95rem;max-width:480px;line-height:1.75;margin-bottom:2.5rem;}
+.coming-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.coming-card{
+  background:var(--surface);padding:1.75rem;
+  transition:background 0.2s;
+}
+.coming-card:hover{background:var(--surface2);}
+.coming-icon{font-size:1.5rem;margin-bottom:0.75rem;display:block;}
+.coming-card h3{
+  font-family:var(--display);font-size:1rem;font-weight:700;
+  color:var(--text);margin-bottom:0.4rem;
+}
+.coming-card p{font-size:0.85rem;color:var(--muted);line-height:1.65;font-weight:300;}
+.coming-tag{
+  display:inline-block;margin-top:0.75rem;
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.12em;
+  background:var(--accent-dim);color:var(--accent);
+  padding:0.2rem 0.6rem;
+}
+
+/* ── PAYMENT ── */
+.payment-band{
+  background:var(--surface);border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:3rem 2.5rem;text-align:center;
+}
+.payment-inner{max-width:560px;margin:0 auto;}
+.payment-band h2{
+  font-family:var(--display);font-size:1.4rem;font-weight:800;
+  color:var(--text);margin-bottom:0.6rem;
+}
+.payment-band p{color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.25rem;}
+.payment-checks{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+.pcheck{
+  display:flex;align-items:center;gap:0.4rem;
+  font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;
+  color:var(--green);
+}
+.pcheck-dot{width:5px;height:5px;border-radius:50%;background:var(--green);}
+
+/* ── ECOSYSTEM ── */
+.eco-section{padding:5rem 2.5rem;max-width:1000px;margin:0 auto;}
+.eco-list{display:flex;flex-direction:column;gap:1px;background:var(--border);margin-top:2rem;}
+.eco-item{
+  background:var(--surface);padding:1.1rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;transition:background 0.15s;
+}
+.eco-item:hover{background:var(--surface2);}
+.eco-domain{
+  font-family:var(--mono);font-size:0.82rem;font-weight:600;
+  color:var(--text);
+}
+.eco-desc{font-size:0.82rem;color:var(--muted);flex:1;}
+.eco-badge{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.1em;
+  padding:0.2rem 0.6rem;white-space:nowrap;
+}
+.badge-live{background:var(--green-dim);color:var(--green);}
+.badge-soon{background:var(--accent-dim);color:var(--accent);}
+
+/* ── NOTIFY ── */
+.notify-section{
+  padding:5rem 2.5rem;text-align:center;
+  border-top:1px solid var(--border);
+}
+.notify-inner{max-width:520px;margin:0 auto;}
+.notify-inner h2{
+  font-family:var(--display);font-size:clamp(1.6rem,3vw,2.2rem);
+  font-weight:800;letter-spacing:-0.02em;color:var(--text);margin-bottom:0.75rem;
+}
+.notify-inner p{color:var(--muted);font-size:0.95rem;line-height:1.75;margin-bottom:2rem;}
+.contact-row{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:1.5rem;}
+.contact-item{
+  font-family:var(--mono);font-size:0.65rem;letter-spacing:0.05em;
+  color:var(--muted);transition:color 0.15s;
+  display:flex;align-items:center;gap:0.4rem;
+}
+.contact-item:hover{color:var(--text);}
+.contact-dot{color:var(--accent);}
+
+/* ── FOOTER ── */
+footer{
+  padding:2rem 2.5rem;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+}
+.footer-brand{font-family:var(--display);font-weight:800;font-size:0.95rem;color:var(--text);}
+.footer-brand em{color:var(--accent);font-style:normal;}
+.footer-copy{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.1em;color:var(--faint);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:720px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero{padding:4rem 1.5rem;}
+  .coming-section,.eco-section,.notify-section{padding:3.5rem 1.5rem;}
+  .coming-grid{grid-template-columns:1fr;}
+  .eco-item{flex-direction:column;align-items:flex-start;gap:0.4rem;}
+  footer{flex-direction:column;text-align:center;padding:1.5rem;}
+  .payment-band{padding:2.5rem 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand"><em>All Things</em> Link</div>
+  <ul class="nav-links">
+    <li><a href="#coming">What's Coming</a></li>
+    <li><a href="#ecosystem">Our Sites</a></li>
+    <li><a href="#notify">Stay Updated</a></li>
+    <li><a href="https://benlinkous.com" target="_blank" rel="noopener">BenLinkous.com</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Store · Coming Soon
+    </div>
+    <h1>The Official Store for<br>the <em>LINKS</em> Ecosystem</h1>
+    <p class="hero-sub">Digital resources, guides, tools, and products from across the LINKS network — <strong>cybersecurity, community, education, IT, and more.</strong> One store. Everything linked.</p>
+    <div class="hero-actions">
+      <a href="https://substack.com/@callmelink" target="_blank" rel="noopener" class="btn-primary">Get Notified on Substack</a>
+      <a href="#coming" class="btn-outline">See What's Coming →</a>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT'S COMING -->
+<section class="coming-section" id="coming">
+  <div class="section-label">// what's coming</div>
+  <h2 class="section-title">What This Store Will Offer</h2>
+  <p class="section-sub">No products yet — but here's the direction. Everything will be digital, practical, and fairly priced.</p>
+  <div class="coming-grid">
+    <div class="coming-card">
+      <span class="coming-icon">🛡️</span>
+      <h3>Cybersecurity Resources</h3>
+      <p>Study guides, cheat sheets, and supplemental materials for the link2cyber.com 80-day bootcamp and CompTIA cert prep.</p>
+      <span class="coming-tag">link2cyber.com</span>
+    </div>
+    <div class="coming-card">
+      <span class="coming-icon">💼</span>
+      <h3>IT & Business Templates</h3>
+      <p>Practical templates for small businesses — IT documentation, security checklists, onboarding guides, and policy templates.</p>
+      <span class="coming-tag">nrvmanagedit.com</span>
+    </div>
+    <div class="coming-card">
+      <span class="coming-icon">🌐</span>
+      <h3>Web & Tech Guides</h3>
+      <p>Step-by-step guides for non-developers — building websites, using AI tools, and getting things done without a tech background.</p>
+      <span class="coming-tag">link2it.io</span>
+    </div>
+    <div class="coming-card">
+      <span class="coming-icon">🏘️</span>
+      <h3>Community Resources</h3>
+      <p>Civic engagement guides, Good Neighbor Project materials, and community organizing resources for the NRV and beyond.</p>
+      <span class="coming-tag">callmelink.org</span>
+    </div>
+    <div class="coming-card">
+      <span class="coming-icon">🎖️</span>
+      <h3>Veteran Transition Tools</h3>
+      <p>Resources for veterans entering tech, civic life, and community leadership. Practical guides from someone who made the transition.</p>
+      <span class="coming-tag">benlinkous.com</span>
+    </div>
+    <div class="coming-card">
+      <span class="coming-icon">📚</span>
+      <h3>STEM Education Materials</h3>
+      <p>Kid-friendly and educator-ready STEM resources — coding guides, drone basics, rocketry projects, and engineering activities.</p>
+      <span class="coming-tag">stemkidz.biz</span>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<div class="payment-band">
+  <div class="payment-inner">
+    <h2>Secure Checkout via Stripe</h2>
+    <p>When products launch, all purchases will be processed securely through Stripe. No accounts required for most products. Simple, safe, and straightforward.</p>
+    <div class="payment-checks">
+      <div class="pcheck"><span class="pcheck-dot"></span>Stripe payments</div>
+      <div class="pcheck"><span class="pcheck-dot"></span>No hidden fees</div>
+      <div class="pcheck"><span class="pcheck-dot"></span>Instant delivery for digital products</div>
+      <div class="pcheck"><span class="pcheck-dot"></span>Simple refund policy</div>
+    </div>
+  </div>
+</div>
+
+<!-- ECOSYSTEM -->
+<section class="eco-section" id="ecosystem">
+  <div class="section-label">// the links ecosystem</div>
+  <h2 class="section-title">22 Sites. One Mission.</h2>
+  <p class="section-sub">Products in this store come from across the LINKS network. Here are the sites behind them.</p>
+  <div class="eco-list">
+    <div class="eco-item">
+      <div class="eco-domain">nrvmanagedit.com</div>
+      <div class="eco-desc">Managed IT & cybersecurity for small businesses in the NRV</div>
+      <span class="eco-badge badge-live">Live</span>
+    </div>
+    <div class="eco-item">
+      <div class="eco-domain">link2cyber.com</div>
+      <div class="eco-desc">Free 80-day cybersecurity bootcamp — zero to job-ready</div>
+      <span class="eco-badge badge-live">Live</span>
+    </div>
+    <div class="eco-item">
+      <div class="eco-domain">link2it.io</div>
+      <div class="eco-desc">Technology for non-programmers — AI, web dev, and IT</div>
+      <span class="eco-badge badge-live">Live</span>
+    </div>
+    <div class="eco-item">
+      <div class="eco-domain">callmelink.org</div>
+      <div class="eco-desc">Civic writing on community, politics, and showing up</div>
+      <span class="eco-badge badge-live">Live</span>
+    </div>
+    <div class="eco-item">
+      <div class="eco-domain">linksnrv.com</div>
+      <div class="eco-desc">Local life in the New River Valley</div>
+      <span class="eco-badge badge-live">Live</span>
+    </div>
+    <div class="eco-item">
+      <div class="eco-domain">stemkidz.biz</div>
+      <div class="eco-desc">Tech STEM for kids, families, and educators</div>
+      <span class="eco-badge badge-live">Live</span>
+    </div>
+    <div class="eco-item">
+      <div class="eco-domain">benlinkous.com</div>
+      <div class="eco-desc">The personal hub connecting everything</div>
+      <span class="eco-badge badge-live">Live</span>
+    </div>
+    <div class="eco-item">
+      <div class="eco-domain">link2stem.com · link2steam.com · and more</div>
+      <div class="eco-desc">Education, community, and mission-driven sites — in development</div>
+      <span class="eco-badge badge-soon">Building</span>
+    </div>
+  </div>
+</section>
+
+<!-- NOTIFY -->
+<div class="notify-section" id="notify">
+  <div class="notify-inner">
+    <h2>Be the first to know.</h2>
+    <p>Subscribe to the Substack to get notified when products launch. No spam — just an honest note when something worth buying is ready.</p>
+    <a href="https://substack.com/@callmelink" target="_blank" rel="noopener" class="btn-primary">Subscribe on Substack</a>
+    <div class="contact-row">
+      <a href="mailto:callmelink@benlinkous.com" class="contact-item"><span class="contact-dot">→</span> callmelink@benlinkous.com</a>
+      <a href="https://benlinkous.com" target="_blank" rel="noopener" class="contact-item"><span class="contact-dot">→</span> benlinkous.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><em>All Things</em> Link</div>
+  <div class="footer-copy">© <span id="yr"></span> Ben Linkous · Pulaski, Virginia · Powered by Stripe</div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
